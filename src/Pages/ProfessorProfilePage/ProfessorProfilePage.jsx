@@ -149,7 +149,7 @@ const top100Films = [
     { title: 'Inglourious Basterds', year: 2009 },
     { title: 'Snatch', year: 2000 },
     { title: '3 Idiots', year: 2009 },
-    { title: 'Monty Python and the Holy Grail', year: 1975 },
+    { title: 'Monty Python and the Holy Grail', year: 1975 }
   ];
 const ProfessorProfilePage = () => {
   return (

@@ -120,9 +120,6 @@ const ProfessorProfilePage = () => {
   );
 };
 
-export default ProfessorProfilePage;
-
-
 
 const top100Films = [
     { title: 'The Shawshank Redemption', year: 1994 },
@@ -250,3 +247,7 @@ const top100Films = [
     { title: '3 Idiots', year: 2009 },
     { title: 'Monty Python and the Holy Grail', year: 1975 },
   ];
+
+export default ProfessorProfilePage;
+
+

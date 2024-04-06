@@ -23,102 +23,6 @@ import "./ProfessorProfilePage.css";
 //images
 import ProfessorProfileImage from "../../assets/images/professor_profile.png";
 
-const ProfessorProfilePage = () => {
-  return (
-    <div id="professor-profile-page-container">
-      <div className="prof-profile-form-container">
-        <h2 style={{textAlign:'center'}}>Profile </h2>
-        <form id="prof-profile-form">
-          
-        <FormControl sx={{ m: 1, width: '100%', display:'block' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-name"
-            type={'text'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton>
-                  <AbcIcon/>
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Name"
-            sx={{
-              width: '100%',
-            }}
-          />
-        </FormControl>
-
-        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-email" >Email</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-email"
-            type={'text'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton>
-                  <EmailIcon/>
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Email"
-            sx={{
-              width: '100%',
-            }}
-          />
-        </FormControl>
-
-        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-department">Department</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-department"
-            type={'text'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton>
-                  <AutoStoriesIcon/>
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Department"
-            sx={{
-              width: '100%',
-            }}
-          />
-        </FormControl>
-
-        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
-        <Autocomplete
-        multiple
-        id="tags-outlined"
-        options={top100Films}
-        getOptionLabel={(option) => option.title}
-        defaultValue={[top100Films[13]]}
-        filterSelectedOptions
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Select Courses"
-            placeholder="Courses"
-          />
-        )}
-      />
-        </FormControl>
-       
-        </form>
-      </div>
-      <div className="prof-profile-img-container">
-        <img
-          src={ProfessorProfileImage}
-          className="professor-profile-page"
-          alt="professor profile"
-          width={"100%"}
-          height={"100%"}
-        />
-      </div>
-    </div>
-  );
-};
 
 
 const top100Films = [
@@ -247,6 +151,102 @@ const top100Films = [
     { title: '3 Idiots', year: 2009 },
     { title: 'Monty Python and the Holy Grail', year: 1975 },
   ];
+const ProfessorProfilePage = () => {
+  return (
+    <div id="professor-profile-page-container">
+      <div className="prof-profile-form-container">
+        <h2 style={{textAlign:'center'}}>Profile </h2>
+        <form id="prof-profile-form">
+          
+        <FormControl sx={{ m: 1, width: '100%', display:'block' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-name">Name</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-name"
+            type={'text'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton>
+                  <AbcIcon/>
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Name"
+            sx={{
+              width: '100%',
+            }}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-email" >Email</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-email"
+            type={'text'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton>
+                  <EmailIcon/>
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Email"
+            sx={{
+              width: '100%',
+            }}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-department">Department</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-department"
+            type={'text'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton>
+                  <AutoStoriesIcon/>
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Department"
+            sx={{
+              width: '100%',
+            }}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '100%',display:'block' }} variant="outlined">
+        <Autocomplete
+        multiple
+        id="tags-outlined"
+        options={top100Films}
+        getOptionLabel={(option) => option.title}
+        defaultValue={[top100Films[13]]}
+        filterSelectedOptions
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Select Courses"
+            placeholder="Courses"
+          />
+        )}
+      />
+        </FormControl>
+       
+        </form>
+      </div>
+      <div className="prof-profile-img-container">
+        <img
+          src={ProfessorProfileImage}
+          className="professor-profile-page"
+          alt="professor profile"
+          width={"100%"}
+          height={"100%"}
+        />
+      </div>
+    </div>
+  );
+};
 
 export default ProfessorProfilePage;
 

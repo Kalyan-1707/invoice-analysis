@@ -1,27 +1,28 @@
-body{
-    background-color: #CCD9C7;
+body {
+  background-color: #ccd9c7;
 }
-.landing-page-desc-container{
-    display: grid;
-    place-content: center;
+.landing-page-desc-container {
+  display: grid;
+  place-content: center;
 }
-.heading{
-    font-family: 'Roboto';
-    font-size: 42px;
-    color: black;
-}
-
-.description{
-    font-family: 'Arial';
-    font-size: 24px;
-    color: #333333;
-    font-weight: 500;
+.heading {
+  font-family: "Helvetica";
+  font-size: 42px;
+  color: black;
+  text-shadow: 1px 1px 1px gray;
 }
 
-#login-btn-container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    align-items: center;
+.description {
+  font-family: "Helvetica";
+  font-size: 22px;
+  color: #333333;
+  font-weight: 500;
+}
+
+#login-btn-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
 }

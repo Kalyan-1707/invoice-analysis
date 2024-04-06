@@ -17,7 +17,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Pages.LandingPage />}></Route>
         {/* <Route path="/student"></Route> */}
-        <Route path="/professor/:id"></Route>
+        <Route path="/professor/profile" element={<Pages.ProfessorProfilePage />}>
+        </Route>
         <Route path="/applications"></Route>
         <Route path="/job-posting"></Route>
       </Routes>

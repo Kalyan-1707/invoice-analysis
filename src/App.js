@@ -9,15 +9,16 @@ import {
   useParams,
 } from "react-router-dom";
 import "./App.css";
-import Pages from "./Pages";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Pages.LandingPage />}></Route>
+        <Route path="/" element={<LandingPage />}></Route>
         {/* <Route path="/student"></Route> */}
-        <Route path="/professor/profile" element={<Pages.ProfessorProfilePage />}>
+        <Route path="/professor/profile" element={<ProfessorProfilePage />}>
         </Route>
         <Route path="/applications"></Route>
         <Route path="/job-posting"></Route>

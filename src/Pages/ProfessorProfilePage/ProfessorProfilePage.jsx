@@ -1,7 +1,6 @@
 import React from "react";
 
 //MUI
-import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
@@ -11,8 +10,6 @@ import InputLabel from "@mui/material/InputLabel";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import EmailIcon from '@mui/icons-material/Email';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import HelpIcon from '@mui/icons-material/Help';
-import FormLabel from '@mui/material/FormLabel';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 

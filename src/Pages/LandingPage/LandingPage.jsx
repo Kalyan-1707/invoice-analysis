@@ -94,6 +94,7 @@ const LandingPage = () => {
         });
       }
 
+
       // set user details
       localStorage.setItem("userDetails", JSON.stringify(user));
       setIsUserLoggedIn(true);
@@ -104,8 +105,10 @@ const LandingPage = () => {
         isOpen: true,
       });
 
-      if(response.redirect === true) {
-        redirect(response.url);
+      if(response?.redirect === true) {
+        //get base  url of app
+        const baseUrl = window.location.origin;
+        window.location.href = baseUrl + response.url;
       }
     } else {
       if (user && !validateSchoolMail(user.email)) {

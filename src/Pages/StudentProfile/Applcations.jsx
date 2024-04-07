@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -8,125 +8,29 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Divider from "@mui/material/Divider";
 import { FormControl, Button, TextField, FormLabel } from "@mui/material";
+import api from "../../api";
 
-const applications = [
-  {
-    id: "1",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "2",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "3",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "4",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "5",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "6",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "7",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "8",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "9",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "10",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "11",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "12",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "13",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-  {
-    id: "14",
-    course: "ITCS 1111 aaaaaaaaaaa",
-    professor: "hjdjhs",
-    nomerOfVacancies: "2",
-    description:
-      "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
-  },
-];
+// const applications = [
+//   {
+//     id: "1",
+//     course: "ITCS 1111 aaaaaaaaaaa",
+//     professor: "hjdjhs",
+//     nomerOfVacancies: "2",
+//     description:
+//       "qwertyuioplkjhgfdsa zxcvbnm, asdfghjkl qwertyuiop qwertyuiop qwertyuio, qw ertyhj qwerty",
+//   },
+// ];
 
 function Applcations() {
+
+  const [applications, setApplications] = React.useState([]);
+
+
   const [open, setOpen] = React.useState(false);
   const [courseSelected, setCourseSelected] = React.useState({});
+
+  const [coverLetter, setCoverLetter] = React.useState("");
+
   const handleOpen = (application) => {
     setOpen(true);
     setCourseSelected(application);
@@ -144,6 +48,30 @@ function Applcations() {
     p: 4,
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+    const semail = userDetails.email;
+    const response = await api.applyHiringPost({
+      studentEmail: semail,
+      courseId: courseSelected.courseId,
+      courseName: courseSelected.courseName,
+      professorEmail: courseSelected.email,
+      description: coverLetter
+    });
+    if (response) {
+    }
+  }
+
+  useEffect(() => {
+
+    const getApplications = async () => {
+      const response = await api.getHiringPosts();
+      setApplications(response);
+    };
+    getApplications();
+  },[])
+
   return (
     <>
       <Box sx={{ m: 5, mx: "auto" }}>
@@ -152,14 +80,14 @@ function Applcations() {
           <Card key={application.id} sx={{ minWidth: 275, my: 2, p: 2 }}>
             <CardContent>
               <Typography sx={{ fontSize: 18 }}>
-                {application.course}
+                {application.courseName}
               </Typography>
               <Typography sx={{ fontSize: 16 }} color="text.secondary">
-                {application.professor}
+                Professor Name
               </Typography>
               <Divider />
               <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                {application.nomerOfVacancies} open positions.
+                {application.positionsOpen} open positions.
               </Typography>
               <Typography sx={{ fontSize: 16 }}>
                 {application.description}
@@ -180,10 +108,10 @@ function Applcations() {
       <Modal keepMounted open={open} onClose={handleClose}>
         <Box sx={style}>
           <Typography variant="h6" component="h2">
-            {courseSelected.course}
+            {courseSelected.courseName}
           </Typography>
           <Typography variant="h6" component="h2" color="text.secondary">
-            {courseSelected.professor}
+            Professor Name 
           </Typography>
           <form>
             <FormControl sx={{ my: 3, display: "block", width: "100%" }}>
@@ -193,10 +121,12 @@ function Applcations() {
                 rows={10}
                 variant="outlined"
                 sx={{ width: "100%" }}
+                value={coverLetter}
+                onChange={(e) => setCoverLetter(e.target.value)}
                 // inputProps={{ style: { resize: "vertical" } }}
               />
             </FormControl>
-            <Button variant="contained" color="success" sx={{ width: "100%" }}>
+            <Button variant="contained" color="success" sx={{ width: "100%" }} onClick={handleSubmit}>
               Submit
             </Button>
           </form>

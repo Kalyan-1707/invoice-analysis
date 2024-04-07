@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Divider from "@mui/material/Divider";
+import { FormControl, Button, TextField, FormLabel } from "@mui/material";
 
 const applications = [
   {
@@ -136,7 +137,7 @@ function Applcations() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 400,
+    width: "50%",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,
@@ -148,7 +149,7 @@ function Applcations() {
       <Box sx={{ m: 5, mx: "auto" }}>
         {applications.map((application) => (
           //
-          <Card sx={{ minWidth: 275, my: 2, p: 2 }}>
+          <Card key={application.id} sx={{ minWidth: 275, my: 2, p: 2 }}>
             <CardContent>
               <Typography sx={{ fontSize: 18 }}>
                 {application.course}
@@ -181,10 +182,24 @@ function Applcations() {
           <Typography variant="h6" component="h2">
             {courseSelected.course}
           </Typography>
-          <Typography variant="h6" component="h2">
+          <Typography variant="h6" component="h2" color="text.secondary">
             {courseSelected.professor}
           </Typography>
-          
+          <form>
+            <FormControl sx={{ my: 3, display: "block", width: "100%" }}>
+              <FormLabel htmlFor="coverLetter">Cover Letter</FormLabel>
+              <TextField
+                multiline
+                rows={10}
+                variant="outlined"
+                sx={{ width: "100%" }}
+                // inputProps={{ style: { resize: "vertical" } }}
+              />
+            </FormControl>
+            <Button variant="contained" color="success" sx={{ width: "100%" }}>
+              Submit
+            </Button>
+          </form>
         </Box>
       </Modal>
     </>

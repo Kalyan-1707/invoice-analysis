@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { redirect } from "react-router-dom";
+
 
 //styles
 import "./LandingPage.css";
@@ -25,6 +27,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { firebaseApp } from "../../firebase.js";
+import api from "../../api.js";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(firebaseApp);
@@ -63,17 +66,21 @@ const LandingPage = () => {
       });
   };
 
-  const handleSignIn = () => {
+  const handleSignIn = (type) => {
+    //store type of user in local storage
+    localStorage.setItem('userType', type);
     signInWithRedirect(auth, provider);
   };
 
   async function validateLoginSession(user) {
     if (user && validateSchoolMail(user.email)) {
+      let response;
       try {
-        const response = await api.loginAuth({
+        response = await api.auth({
           email: user.email,
-          fullname: user.displayName,
-          profilePic: user.photoURL,
+          name: user.displayName,
+          image: user.photoURL,
+          type: localStorage.getItem('userType'),
         });
       } catch (error) {
         console.log(error);
@@ -96,6 +103,10 @@ const LandingPage = () => {
         severity: "success",
         isOpen: true,
       });
+
+      if(response.redirect === true) {
+        redirect(response.url);
+      }
     } else {
       if (user && !validateSchoolMail(user.email)) {
         setToastMessageProps({
@@ -146,7 +157,7 @@ const LandingPage = () => {
           <Button
             variant="contained"
             startIcon={<GoogleIcon />}
-            onClick={handleSignIn}
+            onClick={() => handleSignIn('student')}
             color="success"
             style={{
               width: "40%",
@@ -157,7 +168,7 @@ const LandingPage = () => {
           <Button
             variant="contained"
             startIcon={<GoogleIcon />}
-            onClick={handleSignIn}
+            onClick={() => handleSignIn('professor')}
             style={{
               backgroundColor: "#ECBB45",
               width: "40%",

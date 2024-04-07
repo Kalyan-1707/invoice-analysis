@@ -17,11 +17,13 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        {/* <Route path="/student"></Route> */}
         <Route path="/professor/profile" element={<ProfessorProfilePage />}>
         </Route>
         <Route path="/applications"></Route>
         <Route path="/job-posting"></Route>
+        <Route path="*">
+          Page not found
+        </Route>
       </Routes>
     </Router>
   );

@@ -13,18 +13,20 @@ import LandingPage from "./Pages/LandingPage/LandingPage";
 import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
 import StudentProfile from "./Pages/StudentProfile/StudentProfile";
 import ProfessorCoursesPage from "./Pages/ProfessorCoursesPage/ProfessorCoursesPage";
+import Applcations from "./Pages/StudentProfile/Applcations";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/student" element={<StudentProfile />}></Route>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/student/profile/edit" element={<StudentProfile />} />
         <Route path="/professor" element={<ProfessorCoursesPage />}></Route>
-        <Route path="/professor/profile/edit" element={<ProfessorProfilePage />}></Route>
-        <Route path="*">
-          Page not found
-        </Route>
+        <Route path="/professor/profile/edit" element={<ProfessorProfilePage />} />
+        <Route path="/student" element={<Applcations />} />
+        {/* <Route path="/professor/:id"/>
+        <Route path="/job-posting"/> */}
+        <Route path="*" element={<div>Page not found</div>} />
       </Routes>
     </Router>
   );

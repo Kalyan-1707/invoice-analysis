@@ -12,7 +12,7 @@ import "./App.css";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
 import StudentProfile from "./Pages/StudentProfile/StudentProfile";
-import Applcations from "./Pages/StudentProfile/applcations";
+import Applcations from "./Pages/StudentProfile/Applcations";
 
 const App = () => {
   return (

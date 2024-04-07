@@ -14,6 +14,8 @@ import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfileP
 import StudentProfile from "./Pages/StudentProfile/StudentProfile";
 import ProfessorCoursesPage from "./Pages/ProfessorCoursesPage/ProfessorCoursesPage";
 import Applcations from "./Pages/StudentProfile/Applcations";
+import ProfessorViewPage from "./Pages/ProfessorViewPage/ProfessorViewPage";
+import StudentProfileView from "./Pages/StudentProfileView/StudentProfileView";
 
 const App = () => {
   return (
@@ -23,6 +25,10 @@ const App = () => {
         <Route path="/student/profile/edit" element={<StudentProfile />} />
         <Route path="/professor" element={<ProfessorCoursesPage />}></Route>
         <Route path="/professor/profile/edit" element={<ProfessorProfilePage />} />
+        
+        <Route path="/professor/view" element={<ProfessorViewPage />} />
+        <Route path="/student/application/:id" element={<StudentProfileView />} />
+        
         <Route path="/student" element={<Applcations />} />
         {/* <Route path="/professor/:id"/>
         <Route path="/job-posting"/> */}

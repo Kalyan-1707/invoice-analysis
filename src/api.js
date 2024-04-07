@@ -130,6 +130,35 @@ async function applyHiringPost({studentEmail,courseId,courseName,professorEmail,
     }
 }
 
+async function viewCourseApplication({email}){
+    try{
+
+        const response = await axios.post(BASE_URL + '/professors/applications', {
+            email
+        })
+        console.log('Response:', response.data);
+        return response.data;
+    }
+    catch(error){
+        console.error('Error:', error);
+    }
+}
+
+async function getStudentApplication({id}){
+
+    try{
+        const response = await axios.post(BASE_URL + '/applications/view', {
+            id,
+        })
+        console.log('Response:', response.data);
+        return response.data;
+    }
+    catch(error){
+        console.error('Error:', error);
+    } 
+    
+}
+
 export default api = {
     auth: auth,
     getCourses: getCourses,
@@ -138,5 +167,6 @@ export default api = {
     postCourseHiring: postCourseHiring,
     studentProfile: studentProfile,
     getHiringPosts: getHiringPosts,
-    applyHiringPost: applyHiringPost
+    applyHiringPost: applyHiringPost,
+    viewCourseApplication: viewCourseApplication
 }

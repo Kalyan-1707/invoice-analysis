@@ -60,6 +60,7 @@ function Applcations() {
       description: coverLetter
     });
     if (response) {
+      handleClose();
     }
   }
 

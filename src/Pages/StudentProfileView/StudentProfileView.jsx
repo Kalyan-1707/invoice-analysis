@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Box from "@mui/system/Box";
-import Container from "@mui/material/Container";
+import React, { useEffect, useState } from 'react'
+
+import { useParams } from "react-router-dom";
+//styles
+
 import TextField from "@mui/material/TextField";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import { FormControl, InputLabel } from "@mui/material";
@@ -12,67 +14,31 @@ import SchoolIcon from "@mui/icons-material/School";
 import Typography from "@mui/material/Typography";
 import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
-import studentImage from "../../assets/images/student.png";
 
-import "./StudentProfile.css";
-import api from "../../api";
+import './StudentProfileView.css'
+
+const StudentProfileView = () => {
+
+    const { id } = useParams();
+
+    useEffect(() => {
+        console.log(id)  
+    },[])
 
 
+    const[courses, setCourses] = useState([])
 
-function StudentProfile() {
-  // const [taExp, setTaExp] = useState([]);
-  // const handleAddTAExp = () => {};
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        major: "",
+        degree: "",
+        courses: [],
+    })
 
-
-  const [courses, setCourses] = useState([]);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    major: "",
-    degree: "",
-    courses: [],
-  })
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const user = {
-      name: formData.name,
-      email: formData.email,
-      major: formData.major,
-      degree: formData.degree,
-      courses: formData.courses
-    }
-    const response = await api.studentProfile(user);
-    if(response){
-        // onsucess redirect
-        const baseUrl = window.location.origin;
-        window.location.href = baseUrl + "/student";
-    }
-  }
-
-  useEffect(() => {
-  
-    const getCourses = async () => {
-      const courses = await api.getCourses();
-      setCourses(courses);
-    };
-    getCourses();
-
-    const userDetails = JSON.parse(localStorage.getItem("userDetails"));
-    if(userDetails){
-        setFormData({
-            ...formData,  
-          name: userDetails.displayName,
-            email: userDetails.email,
-            
-        })
-    }
-
-  },[])
   return (
     <div id="student-profile-page-container">
-      <div className="student-profile-form-container">
+    <div className="student-profile-form-container">
         <Typography variant="h4" align="center" component="h4">
           Create your profile
         </Typography>
@@ -80,7 +46,7 @@ function StudentProfile() {
           <FormControl sx={{ my: 3, display: "block" }}>
             <InputLabel htmlFor="name">Name</InputLabel>
             <OutlinedInput
-              disabled
+            disabled
               sx={{ width: "100%" }}
               type="text"
               label="Name"
@@ -98,6 +64,7 @@ function StudentProfile() {
           <FormControl sx={{ my: 3, display: "block" }}>
             <InputLabel htmlFor="email">Email</InputLabel>
             <OutlinedInput
+              disabled
               sx={{ width: "100%" }}
               type="email"
               label="email"
@@ -114,6 +81,7 @@ function StudentProfile() {
           <FormControl sx={{ my: 3, display: "block" }}>
             <InputLabel htmlFor="major">Major</InputLabel>
             <OutlinedInput
+            disabled
               sx={{ width: "100%" }}
               type="text"
               label="Major"
@@ -130,6 +98,7 @@ function StudentProfile() {
           <FormControl sx={{ my: 3, display: "block" }}>
             <InputLabel htmlFor="degree">Degree</InputLabel>
             <OutlinedInput
+            disabled
               sx={{ width: "100%" }}
               type="text"
               label="Degree"
@@ -145,6 +114,7 @@ function StudentProfile() {
           </FormControl>
           <FormControl sx={{ my: 3, display: "block", width: "100%" }}>
             <Autocomplete
+            disabled
               multiple
               id="tags-outlined"
               options={courses}
@@ -161,35 +131,20 @@ function StudentProfile() {
               )}
             />
           </FormControl>
-          {/* <FormControl sx={{ my: 3, display: "block" }}>
-            <Box>
-              <Typography variant="h6" component="h6">
-                Previous TA Experience
-              </Typography>
-              <Button
-                variant="contained"
-                color="success"
-                onClick={handleAddTAExp}
-              >
-                Add
-              </Button>
-            </Box>
-          </FormControl> */}
-          <Button variant="contained" sx={{ width: "100%" }} onClick={handleSubmit}>
-            Submit
-          </Button>
+          
         </form>
       </div>
-      <div className="student-profile-img-container">
-        <img
-          src={studentImage}
-          alt="student image"
-          width="100%"
-          height="100%"
-        />
-        </div>
-    </div>
-  );
+    <div className="student-profile-img-container">
+      
+    <Typography variant="body1" gutterBottom>
+        body1. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos
+        blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur,
+        neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum
+        quasi quidem quibusdam.
+      </Typography>
+      </div>
+  </div>
+  )
 }
 
-export default StudentProfile;
+export default StudentProfileView

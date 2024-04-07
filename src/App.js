@@ -9,18 +9,22 @@ import {
   useParams,
 } from "react-router-dom";
 import "./App.css";
-import Pages from "./Pages";
+import LandingPage from "./Pages/LandingPage/LandingPage";
+import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
+import StudentProfile from "./Pages/StudentProfile/StudentProfile";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Pages.LandingPage />}></Route>
-        <Route path="/student" element={<Pages.StudentProfile />}></Route>
-        <Route path="/professor"></Route>
-        <Route path="/professor/:id"></Route>
+        <Route path="/" element={<LandingPage />}></Route>
+        <Route path="/student" element={<StudentProfile />}></Route>
+        <Route path="/professor" element={<ProfessorProfilePage />}></Route>
+        {/* <Route path="/professor/:id"></Route>
         <Route path="/applications"></Route>
-        <Route path="/job-posting"></Route>
+        <Route path="/job-posting"></Route> */}
+        <Route path="*" element={<div>Page not found</div>}></Route>
+
       </Routes>
     </Router>
   );

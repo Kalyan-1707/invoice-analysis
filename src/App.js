@@ -12,6 +12,7 @@ import "./App.css";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
 import StudentProfile from "./Pages/StudentProfile/StudentProfile";
+import ProfessorCoursesPage from "./Pages/ProfessorCoursesPage/ProfessorCoursesPage";
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/student" element={<StudentProfile />}></Route>
-        <Route path="/professor" element={<ProfessorProfilePage />}></Route>
+        <Route path="/professor" element={<ProfessorCoursesPage />}></Route>
+        <Route path="/professor/profile/edit" element={<ProfessorProfilePage />}></Route>
         <Route path="*">
           Page not found
         </Route>

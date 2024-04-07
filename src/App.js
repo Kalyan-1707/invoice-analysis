@@ -11,16 +11,15 @@ import {
 import "./App.css";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import ProfessorProfilePage from "./Pages/ProfessorProfilePage/ProfessorProfilePage";
+import StudentProfile from "./Pages/StudentProfile/StudentProfile";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LandingPage />}></Route>
-        <Route path="/professor/profile" element={<ProfessorProfilePage />}>
-        </Route>
-        <Route path="/applications"></Route>
-        <Route path="/job-posting"></Route>
+        <Route path="/student" element={<StudentProfile />}></Route>
+        <Route path="/professor" element={<ProfessorProfilePage />}></Route>
         <Route path="*">
           Page not found
         </Route>
